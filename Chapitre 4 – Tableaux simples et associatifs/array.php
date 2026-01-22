@@ -33,4 +33,13 @@ echo count($names) . "<br>";
 $frontend = ["html", "css", "js"];
 $backend = ["mySQL", "PHP"];
 $result = array_merge($frontend, $backend);
+echo "<pre>";
 print_r($result);
+echo "</pre>";
+ 
+
+
+//Multidimensional Arrays
+$notes = [[12, 15, 14,[100 , 5 , 1]],[10, 18, 16], [9, 11, 13]];
+echo $notes[0][3][2] . "<br>";//outpot 1
+echo $notes [1][0] . "<br>"; //outpot 10
