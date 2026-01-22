@@ -2,8 +2,8 @@
 $animaux = ["Chat", "Chien", "Lapin"];//simple array
 echo "Premier animal : " . $animaux[0] . "<br>";
 foreach ($animaux as $animal) {
-    echo "Animal : $animal <br>";
-}
+    echo "Animal : $animal <br>";}
+
 
 
 $voiture = ["marque" => "Toyota",
@@ -21,15 +21,16 @@ echo "Nombre de fruits : " . count($fruits) . "<br>";
 
 
 
+
 $names = ["ahmed" , "mohamed" , "ali"];
 $names[] = "omar"; //Ajoute omar
-echo $names[3];
-echo count($names);
+echo $names[3] . "<br>";
+echo count($names) . "<br>";
 
 
 
 
-$a = [1, 2, 3];
-$b = [4, 5];
-$result = array_merge($a, $b);
+$frontend = ["html", "css", "js"];
+$backend = ["mySQL", "PHP"];
+$result = array_merge($frontend, $backend);
 print_r($result);
