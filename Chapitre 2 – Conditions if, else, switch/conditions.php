@@ -39,3 +39,5 @@ switch ($jour) {
 
 $age = 100;
  echo ($age >= 18) ? "adult" : (($age >= 13) ? "teen" : "kids");
+
+ 
