@@ -10,7 +10,7 @@ if ($age <= 18){
 
 $note = 16.99;
 if($note >= 18){
-    echo "very good , congratulation" . "<br>";
+    echo "very good , congratulations" . "<br>";
 }elseif($note >= 16){
     echo "very good" . "<br>";
 }elseif($note >= 14){
