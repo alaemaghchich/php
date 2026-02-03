@@ -1,14 +1,12 @@
 <?php
-// fichier : traitement.php
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nom = trim($_POST['nom']);
-    $email = trim($_POST['email']);
-
-    if (empty($nom) || empty($email)) {
-        echo "Tous les champs sont obligatoires.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Email invalide.";
-    } else {
-        echo "Bonjour $nom, votre email est $email.";
-    }
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+    $name = trim($_POST["name"]);
+    $mail = trim($_POST["mail"]);
+}
+if(empty($name) || empty($mail)){
+    echo "all inputs is requird";
+}elseif(!filter_var($mail, FILTER_VALIDATE_EMAIL)){
+    echo "check ur email";
+}else{
+    echo "welcome sir: " . $name . "ur mail " . $mail;
 }

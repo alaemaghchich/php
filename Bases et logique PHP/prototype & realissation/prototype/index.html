@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>calcul avg</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<img src="logom.png" alt="motamadris" width="250px" height="50px">
+<img src="ministry-logo-ar.png" alt="morocco">
+<img src="massar-logo.png" alt="massar-logo" width="200px">
+</header>
+    <center><h1>enter student's notes</h1></center>
+    <center><form method="post" action="calcul.php">
+        <label>student name:</label><br>
+        <input type="text" name="nom" required><br><br>
+
+        <label>Note 1:</label><br>
+        <input type="number" name="note1" min="0" max="20" step="0.01" required><br><br>
+
+        <label>Note 2:</label><br>
+        <input type="number" name="note2" min="0" max="20" step="0.01" required><br><br>
+
+        <label>Note 3:</label><br>
+        <input type="number" name="note3" min="0" max="20" step="0.01" required><br><br>
+
+        <button type="submit">calcul avg</button>
+    </form></center>
+</body>
+</html>
