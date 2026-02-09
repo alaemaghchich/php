@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Notes</title>
-    <style>
-        label { display: block; margin-top: 8px; font-weight: bold; }
-        input, select { margin-bottom: 5px; }
-        input, select, option{padding: 10px; width: 200px;}
-    </style>
+    <title>notes management</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <form action="traitement.php" method="post">

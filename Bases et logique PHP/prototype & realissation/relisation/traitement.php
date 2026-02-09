@@ -7,19 +7,11 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $lastname = $_POST["lastname"];
     $birthdate = $_POST["date"];
     $filier = $_POST["filiere"];
-
-    $notes = [
-        $_POST['notepc1'],
-        $_POST['notepc2'],
-        $_POST['noteen1'],
-        $_POST['noteen2'],
-        $_POST['notemath1'],
-        $_POST['notemath2'],
-        $_POST['noteph1'],
-        $_POST['noteph2'],
-        $_POST['notesvt1'],
-        $_POST['notesvt2']
-    ];
+    $notes = [$_POST['notepc1'], $_POST['notepc2'],
+              $_POST['noteen1'], $_POST['noteen2'],
+              $_POST['notemath1'], $_POST['notemath2'],
+              $_POST['noteph1'], $_POST['noteph2'],
+              $_POST['notesvt1'], $_POST['notesvt2']];
 
 if (verifierNotes($notes) == false) {
     echo "Error: Invalid grades, must be between 0 and 20";
@@ -58,14 +50,12 @@ if($filier == "scmath"){
     echo "Name: $name $lastname <br>";
     echo "Birth Date: $birthdate <br>";
     echo "Filiere: $filier <br>";
-
     echo "<h2>Notes</h2>";
     echo "Physique: $avgPC <br>";
     echo "English: $avgEN <br>";
     echo "Math: $avgMATH <br>";
     echo "Philosophie: $avgPH <br>";
     echo "SVT: $avgSVT <br>";
-
     echo "<h3>general average: $avggeneral</h3>";
     echo "<h3>montion: $mention</h3>";
     echo "<h3> final result: $final</h3>";

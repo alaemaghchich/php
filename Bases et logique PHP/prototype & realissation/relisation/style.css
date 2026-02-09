@@ -1,0 +1,91 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+form{
+    background: #ffffff;
+    width: 520px;
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+label{
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: #333;
+}
+
+input, select{
+    padding: 10px 12px;
+    width: 200px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, select:focus{
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102,126,234,0.2);
+}
+
+label + input + input{
+    margin-left: 10px;
+}
+
+button{
+    padding: 10px;
+    width: 120px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+button[type="submit"]{
+    background: linear-gradient(135deg, #00c853, #000000);
+    border: none;
+    color: #fff;
+}
+
+button[type="submit"]:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,200,83,0.4);
+}
+
+button[type="reset"]{
+    background: linear-gradient(135deg, #ff1744, #000000);
+    border: none;
+    color: #fff;
+    margin-left: 15px;
+}
+
+button[type="reset"]:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255,23,68,0.4);
+}
+
+form > br + button{
+    margin-top: 20px;
+}
