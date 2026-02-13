@@ -1,72 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Consultation</title>
     <style>
-        label {
-  display: block; 
-  margin-bottom: 5px; }
+        body {
+            display: flex;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #eef2f7;
+            padding: 30px;
+        }
 
+        form {
+            background-color: white;
+            padding: 25px;
+            width: 500px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2, h3 { color: #2c3e50; }
+        label { 
+         display: block;
+         margin-top: 12px;
+         font-weight: bold; }
+        input, select { 
+         width: 100%;
+         padding: 8px;
+         margin-top: 5px;
+         border-radius: 4px;
+         border: 1px solid #ccc; }
+        input[type="checkbox"] { 
+         width: auto;
+         margin-right: 5px; }
+        button {
+         margin-top: 15px; 
+         padding: 10px; 
+         width: 100%; 
+         background-color: #27ae60; 
+         color: white; 
+         border: none; 
+         border-radius: 4px; 
+         font-size: 16px; }
+        button:hover { background-color: #219150; }
+        a { text-decoration: none; color: #3498db; margin-top: 10px; display: inline-block; }
     </style>
 </head>
 <body>
-    <form action="traitement.php" method="post">
+<div>
+<h2>Add New Consultation</h2>
 
-<fieldset><legend>Patient information</legend>
-    <label>name</label>
-    <input type="text" name="name" required><br>
+<form action="traitement.php" method="POST">
 
-    <label>last name</label>
-    <input type="text" name="lastname" required><br>
+<h3>Patient Information</h3>
+<label>First Name</label>
+<input type="text" name="prenom">
+<label>Last Name</label>
+<input type="text" name="nom">
+<label>Birth Date</label>
+<input type="date" name="date_naissance">
+<label>Gender</label>
+<select name="sexe">
+    <option value="">Select</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+</select>
+<label>Phone</label>
+<input type="text" name="telephone">
 
-    <label >birth date</label>
-    <input type="date" name="date"><br>
+<h3>Consultation Information</h3>
+<label>Consultation Date</label>
+<input type="date" name="date_consultation">
+<label>Reason</label>
+<input type="text" name="motif">
+<label>Temperature (°C)</label>
+<input type="number" step="0.1" name="temperature">
+<label>Systolic Pressure</label>
+<input type="number" name="sys">
+<label>Diastolic Pressure</label>
+<input type="number" name="dia">
+<label>Weight (kg)</label>
+<input type="number" step="0.1" name="poids">
+<label>Height (m)</label>
+<input type="number" step="0.01" name="taille">
 
-    <label>sex</label>
-    <select name="sex" required>
-    <option disabled selected>sex</option>
-    <option value="man">man</option>
-    <option value="women">women</option>
-    </select><br>
+<h3>Symptoms</h3>
+<label><input type="checkbox" name="symptomes[]" value="Fever"> Fever</label>
+<label><input type="checkbox" name="symptomes[]" value="Cough"> Cough</label>
+<label><input type="checkbox" name="symptomes[]" value="Fatigue"> Fatigue</label>
+<label><input type="checkbox" name="symptomes[]" value="Headache"> Headache</label>
 
-    <label>tel</label>
-    <input type="tel" name="tel">
-</fieldset>
-<br>
+<button type="submit">Save Consultation</button>
+</form>
 
-<fieldset><legend>Consultation information</legend>
-   <label>Consultation Date</label>
-        <input type="date" name="date_consultation" required>
-
-        <label>Reason for Consultation</label>
-        <textarea name="reason" required></textarea>
-
-        <label>Body Temperature (°C)</label>
-        <input type="number" step="0.1" name="temperature" required>
-
-        <label>Blood Pressure</label>
-        <input type="number" name="tension_sys" placeholder="Systolic" required>
-        <input type="number" name="tension_dia" placeholder="Diastolic" required>
-
-        <label>Weight (kg)</label>
-        <input type="number" step="0.1" name="poids" required>
-
-        <label>Height (m)</label>
-        <input type="number" step="0.01" name="taille" required>
-
-        <label>Symptoms</label>
-        <div class="checkbox-group">
-            <label><input type="checkbox" name="symptomes[]" value="Fever"> Fever</label>
-            <label><input type="checkbox" name="symptomes[]" value="Cough"> Cough</label>
-            <label><input type="checkbox" name="symptomes[]" value="Fatigue"> Fatigue</label>
-            <label><input type="checkbox" name="symptomes[]" value="Headache"> Headache</label>
-        </div>
-
-        <button type="submit">Save Consultation</button>
-        <button type="reset">reset</button>
-</fieldset>
-    </form>
+<br><a href="index.php">View Consultations</a>
+</div>
 </body>
 </html>

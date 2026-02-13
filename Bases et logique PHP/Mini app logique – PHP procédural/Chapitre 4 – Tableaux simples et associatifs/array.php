@@ -13,7 +13,6 @@ $voiture = ["marque" => "Toyota",
 echo "Modèle : " . $voiture["modele"] . "<br>";
 
 
-
 $fruits = ["Pomme", "Banane"];
 array_push($fruits, "Mangue"); // Ajoute "Mangue"
 unset($fruits[1]); // Supprime "Banane"
@@ -36,6 +35,7 @@ $result = array_merge($frontend, $backend);
 echo "<pre>";
 print_r($result);
 echo "</pre>";
+
  
 
 
