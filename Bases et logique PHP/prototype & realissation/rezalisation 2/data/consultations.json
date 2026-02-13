@@ -1,0 +1,20 @@
+[
+    {
+        "id_patient": "PAT-20260213-2333",
+        "nom": "MAGHCHICH",
+        "prenom": "ALAE",
+        "age": 24,
+        "sexe": "Male",
+        "telephone": "0655454642",
+        "date_consultation": "2026-02-13",
+        "motif": "lma frkabi",
+        "temperature": 38,
+        "tension": "200\/100",
+        "poids": 60,
+        "taille": 1.9,
+        "imc": 30,
+        "symptomes": [
+            "Fever"
+        ]
+    }
+]
