@@ -1,0 +1,127 @@
+[
+    {
+        "id_patient": "PAT-20260219-3093",
+        "nom": "hub",
+        "prenom": "barber",
+        "age": 26,
+        "sexe": "Male",
+        "telephone": "0655454642",
+        "date_consultation": "2026-02-19",
+        "motif": "DJF",
+        "temperature": 38,
+        "tension": "200\/100",
+        "poids": 90,
+        "taille": 1.9,
+        "imc": 24.93,
+        "symptomes": []
+    },
+    {
+        "id_patient": "PAT-20260219-9445",
+        "nom": "hub",
+        "prenom": "barber",
+        "age": 26,
+        "sexe": "Male",
+        "telephone": "0655454642",
+        "date_consultation": "2026-02-19",
+        "motif": "DSHIU",
+        "temperature": 38,
+        "tension": "120 100",
+        "poids": 90,
+        "taille": 1.9,
+        "imc": 24.93,
+        "symptomes": [
+            "Cough"
+        ]
+    },
+    {
+        "id_patient": "PAT-20260219-2394",
+        "nom": "MGH",
+        "prenom": "alae",
+        "age": 21,
+        "sexe": "Male",
+        "telephone": "0611111111",
+        "date_consultation": "2026-02-16",
+        "motif": "siyatik",
+        "temperature": 37,
+        "tension": "200\/100",
+        "poids": 90,
+        "taille": 1.9,
+        "imc": 24.93,
+        "symptomes": [
+            "Fever",
+            "Cough",
+            "Fatigue"
+        ]
+    },
+    {
+        "id_patient": "PAT-20260220-6351",
+        "nom": "mgh",
+        "prenom": "alae",
+        "age": 0,
+        "sexe": "Male",
+        "telephone": "0655454642",
+        "date_consultation": "2026-02-20",
+        "motif": "lma frkabi",
+        "temperature": 37,
+        "tension": "150\/100",
+        "poids": 90,
+        "taille": 1.9,
+        "imc": 24.93,
+        "symptomes": []
+    },
+    {
+        "id_patient": "PAT-20260220-8093",
+        "nom": "maghchich",
+        "prenom": "alae",
+        "age": 4,
+        "sexe": "Male",
+        "telephone": "0655454642",
+        "date_consultation": "2026-02-20",
+        "motif": "lma frkabi",
+        "temperature": 39,
+        "tension": "120\/90",
+        "poids": 90,
+        "taille": 1.9,
+        "imc": 24.93,
+        "symptomes": []
+    },
+    {
+        "id_patient": "PAT-20260220-6805",
+        "nom": "mgh",
+        "prenom": "ALAE",
+        "age": 21,
+        "sexe": "Male",
+        "telephone": "0655454642",
+        "date_consultation": "2026-02-20",
+        "motif": "BOUMEZOUI",
+        "temperature": 37,
+        "tension": "120\/90",
+        "poids": 80,
+        "taille": 1.9,
+        "imc": 22.16,
+        "symptomes": [
+            "Cough",
+            "Fatigue"
+        ]
+    },
+    {
+        "id_patient": "PAT-20260223-6287",
+        "nom": "Maghchich",
+        "prenom": "Alae",
+        "age": 0,
+        "sexe": "Male",
+        "telephone": "0655778899",
+        "date_consultation": "2026-02-23",
+        "motif": "Fievre",
+        "temperature": 40,
+        "tension": "90\/120",
+        "poids": 70,
+        "taille": 1.8,
+        "imc": 21.6,
+        "symptomes": [
+            "Fever",
+            "Fatigue",
+            "Headache"
+        ]
+    }
+]
