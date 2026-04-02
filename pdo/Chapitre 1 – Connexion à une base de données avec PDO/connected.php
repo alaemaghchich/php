@@ -7,7 +7,7 @@ try{
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password, [PDO::ATTR_ERRMODE=> PDO::ERRMODE_EXCEPTION]);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connexion réussie à la base $dbname";
-} catch (PDOException $e) {
+} catch (PDOException $e){
     echo "Erreur de connexion : " . $e->getMessage();
 }
 /*$pdo = new PDO  (dsn , user , password  , options
@@ -22,4 +22,5 @@ setAttribute form: $object->setAttribute(attribute_name, value);*/
 
 /* :: → used to access constant properties and static methods directly inside a class. */
 
-/**/
+/*PDO::ATTR_ERRMODE = How to handle errors if they happen
+PDO::ERRMODE_EXCEPTION = To know there is a problem and go and fix it*/

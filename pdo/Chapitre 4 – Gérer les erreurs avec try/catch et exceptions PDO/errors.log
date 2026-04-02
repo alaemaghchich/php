@@ -1,0 +1,2 @@
+[2026-04-02 11:00:28] Erreur PDO : SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)
+[2026-04-02 11:03:31] Erreur PDO : SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)

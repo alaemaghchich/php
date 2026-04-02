@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$dbname = 'projet_bdd';
+$dbname = 'blogdb';
 $username = 'root';
 $password = '';
 
