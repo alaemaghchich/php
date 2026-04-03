@@ -20,9 +20,11 @@ $recipes = getAllRecipes($pdo);
 
         <?php foreach ($recipes as $recipe) : ?>
             <div class="card">
+
                 <img src="<?= htmlspecialchars($recipe['image']) ?>"
                      alt="<?= htmlspecialchars($recipe['name']) ?>">
                 <div class="card-body">
+
                     <h2><?= htmlspecialchars($recipe['name']) ?></h2>
                     <span class="badge <?= $recipe['category'] ?>">
                         <?= $recipe['category'] ?>
@@ -30,7 +32,9 @@ $recipes = getAllRecipes($pdo);
                     <span class="time">
                         <?= $recipe['prep_time'] ?> min
                     </span>
+                    
                 </div>
+
             </div>
         <?php endforeach; ?>
     </div>
