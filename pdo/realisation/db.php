@@ -1,12 +1,6 @@
 <?php
-$host = 'localhost';
-$dbname = 'recettesdb'; 
-$username = 'root';      
-$password = '';          
-
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
+    $pdo = new PDO("mysql:host=localhost;dbname=recettesdb;charset=utf8", "root", "", [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+} catch (PDOException $e){
     die("Connection failed: " . $e->getMessage());
 }

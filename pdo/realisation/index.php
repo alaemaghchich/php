@@ -1,20 +1,18 @@
 <?php
-require 'functions.php';
+require_once 'functions.php';
 
-// We removed the dbConnect() line because the connection happens automatically inside functions.php via db.php
 
 if (isset($_GET['search']) && !empty($_GET['search'])) {
-    // User is searching
     $recipes = searchRecipes($_GET['search']);
-} elseif (isset($_GET['category']) && !empty($_GET['category'])) {
-    // User is filtering
+}
+elseif (isset($_GET['category']) && !empty($_GET['category'])) {
     $recipes = filterByCategory($_GET['category']);
-
-} elseif (isset($_GET['sort']) && !empty($_GET['sort'])) {
+}
+elseif (isset($_GET['sort']) && !empty($_GET['sort'])) {
     $recipes = sortRecipes($_GET['sort']);
-
-} else {
-    $recipes = getRecipes(); 
+}
+else {
+    $recipes = getRecipes();
 }
 ?>
 

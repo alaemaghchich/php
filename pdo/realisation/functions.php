@@ -1,5 +1,5 @@
 <?php
-require 'db.php'; 
+require_once 'db.php'; 
 
 function getRecipes() {
     global $pdo; 
@@ -25,14 +25,26 @@ function sortRecipes($order) {
     global $pdo; 
     $sql = "SELECT * FROM recipes";
 
-    if ($order == 'temps_asc') {
-        $sql .= " ORDER BY prep_time ASC";
-    } elseif ($order == 'temps_desc') {
-        $sql .= " ORDER BY prep_time DESC";
-    } elseif ($order == 'recent') {
-        $sql .= " ORDER BY created_at DESC";
-    } elseif ($order == 'ancien') {
-        $sql .= " ORDER BY created_at ASC";
+    switch ($order) {
+        case 'temps_asc':
+            $sql = $sql . " ORDER BY prep_time ASC";
+            break;
+
+        case 'temps_desc':
+            $sql = $sql . " ORDER BY prep_time DESC";
+            break;
+
+        case 'recent':
+            $sql = $sql . " ORDER BY created_at DESC";
+            break;
+
+        case 'ancien':
+            $sql = $sql . " ORDER BY created_at ASC";
+            break;
+
+        default:
+            $sql = $sql . " ORDER BY created_at DESC";
+            break;
     }
 
     $stmt = $pdo->query($sql);
