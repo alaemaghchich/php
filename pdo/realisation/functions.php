@@ -1,48 +1,40 @@
 <?php
-function searchRecipes($search) {
-    return !empty($search) ? " name LIKE :search " : "";
+require 'db.php'; 
+
+function getRecipes() {
+    global $pdo; 
+    $stmt = $pdo->query("SELECT * FROM recipes ORDER BY id DESC");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function searchRecipes($keyword) {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM recipes WHERE name LIKE :keyword");
+    $stmt->execute(['keyword' => "%" . $keyword . "%"]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function filterByCategory($category) {
-    $categories_valides = ['Entrée', 'Plat', 'Dessert'];
-    if (in_array($category, $categories_valides)) {
-        return " category = :category ";
-    }
-    return "";
-}
-
-function sortRecipes($sort) {
-    switch ($sort) {
-        case 'time_asc': return " ORDER BY prep_time ASC ";
-        case 'time_desc': return " ORDER BY prep_time DESC ";
-        case 'oldest': return " ORDER BY created_at ASC ";
-        case 'newest': 
-        default: return " ORDER BY created_at DESC ";
-    }
-}
-
-function getRecipes($pdo, $search = '', $category = '', $sort = '') {
-    $sql = "SELECT * FROM recipes";
-    $conditions = [];
-    $params = [];
-    $sqlSearch = searchRecipes($search);
-    $sqlCategory = filterByCategory($category);
-    if ($sqlSearch !== "") {
-        $conditions[] = $sqlSearch;
-        $params[':search'] = '%' . $search . '%';
-    }
-    if ($sqlCategory !== "") {
-        $conditions[] = $sqlCategory;
-        $params[':category'] = $category;
-    }
-    if (count($conditions) > 0) {
-        $sql .= " WHERE " . implode(" AND ", $conditions);
-    }
-    $sql .= sortRecipes($sort);
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
-    
+    global $pdo; 
+    $stmt = $pdo->prepare("SELECT * FROM recipes WHERE category = :category");
+    $stmt->execute(['category' => $category]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-?>
+
+function sortRecipes($order) {
+    global $pdo; 
+    $sql = "SELECT * FROM recipes";
+
+    if ($order == 'temps_asc') {
+        $sql .= " ORDER BY prep_time ASC";
+    } elseif ($order == 'temps_desc') {
+        $sql .= " ORDER BY prep_time DESC";
+    } elseif ($order == 'recent') {
+        $sql .= " ORDER BY created_at DESC";
+    } elseif ($order == 'ancien') {
+        $sql .= " ORDER BY created_at ASC";
+    }
+
+    $stmt = $pdo->query($sql);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

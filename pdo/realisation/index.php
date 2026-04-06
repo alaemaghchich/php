@@ -1,69 +1,76 @@
 <?php
-// index.php
-require_once 'db.php';
-require_once 'functions.php';
+require 'functions.php';
 
-$searchFilter = $_GET['search'] ?? '';
-$categoryFilter = $_GET['category'] ?? '';
-$sortFilter = $_GET['sort'] ?? 'newest';
+// We removed the dbConnect() line because the connection happens automatically inside functions.php via db.php
 
-$recipes = getRecipes($pdo, $searchFilter, $categoryFilter, $sortFilter);
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    // User is searching
+    $recipes = searchRecipes($_GET['search']);
+} elseif (isset($_GET['category']) && !empty($_GET['category'])) {
+    // User is filtering
+    $recipes = filterByCategory($_GET['category']);
+
+} elseif (isset($_GET['sort']) && !empty($_GET['sort'])) {
+    $recipes = sortRecipes($_GET['sort']);
+
+} else {
+    $recipes = getRecipes(); 
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mes Recettes</title>
+    <title>My Recipes</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Liste des recettes</h1>
+    <h1>Recipe Management</h1>
 
-    <div class="form-container">
-        <form method="GET" action="index.php">
+    <div class="controls">
+        <form method="GET" action="index.php" style="display: flex; gap: 15px; width: 100%;">
+            <input type="text" name="search" placeholder="Search..." value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
             
-            <input type="text" name="search" placeholder="Chercher une recette..." 
-                   value="<?= htmlspecialchars($searchFilter) ?>">
-
             <select name="category">
-                <option value="">Toutes les catégories</option>
-                <option value="Entrée" <?= $categoryFilter === 'Entrée' ? 'selected' : '' ?>>Entrée</option>
-                <option value="Plat" <?= $categoryFilter === 'Plat' ? 'selected' : '' ?>>Plat</option>
-                <option value="Dessert" <?= $categoryFilter === 'Dessert' ? 'selected' : '' ?>>Dessert</option>
+                <option value="">-- Category --</option>
+                <option value="Entrée">Entrée</option>
+                <option value="Plat">Plat</option>
+                <option value="Dessert">Dessert</option>
             </select>
 
             <select name="sort">
-                <option value="newest" <?= $sortFilter === 'newest' ? 'selected' : '' ?>>Plus récentes</option>
-                <option value="oldest" <?= $sortFilter === 'oldest' ? 'selected' : '' ?>>Plus anciennes</option>
-                <option value="time_asc" <?= $sortFilter === 'time_asc' ? 'selected' : '' ?>>Temps croissant</option>
-                <option value="time_desc" <?= $sortFilter === 'time_desc' ? 'selected' : '' ?>>Temps décroissant</option>
+                <option value="">-- Sort by --</option>
+                <option value="temps_asc">Time Shortest</option>
+                <option value="temps_desc">Time Longest </option>
+                <option value="recent">Newest</option>
+                <option value="ancien">Oldest</option>
             </select>
 
-            <button type="submit">Filtrer</button>
-            <a href="index.php">Réinitialiser</a>
+            <button type="submit">Apply</button>
+            <a href="index.php"><button type="button">Reset</button></a>
         </form>
     </div>
 
-    <div class="recipe-grid">
-        <?php if (count($recipes) > 0): ?>
+    <div class="card-container">
+        <?php if (empty($recipes)): ?>
+            <p class="error-msg">No recipes found</p>
+        <?php else: ?>
             <?php foreach ($recipes as $recipe): ?>
                 <div class="card">
-                    <?php if (!empty($recipe['image'])): ?>
-                        <img src="<?= htmlspecialchars($recipe['image']) ?>" alt="<?= htmlspecialchars($recipe['name']) ?>">
-                    <?php endif; ?>
+                    <img src="<?= htmlspecialchars($recipe['image']) ?>" alt="<?= htmlspecialchars($recipe['name']) ?>">
                     
                     <h3><?= htmlspecialchars($recipe['name']) ?></h3>
-                    <p><span class="badge"><?= htmlspecialchars($recipe['category']) ?></span></p>
-                    <p>Temps de prép : <?= htmlspecialchars($recipe['prep_time']) ?> min</p>
-                    <p><small>Ajouté le : <?= date('d/m/Y', strtotime($recipe['created_at'])) ?></small></p>
+                    
+                    <p>Category: <span class="tag"><?= htmlspecialchars($recipe['category']) ?></span></p>
+                    
+                    <p>Time: ⏱ <?= htmlspecialchars($recipe['prep_time']) ?> min</p>
+                    
+                    <p><small>Added on: <?= htmlspecialchars($recipe['created_at']) ?></small></p>
                 </div>
             <?php endforeach; ?>
-        <?php else: ?>
-            <p>Aucune recette trouvée avec ces critères.</p>
         <?php endif; ?>
     </div>
-
 </body>
 </html>
