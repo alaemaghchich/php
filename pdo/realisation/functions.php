@@ -1,16 +1,17 @@
 <?php
 require_once 'db.php'; 
 
+//get all recipes in table 
 function getRecipes() {
     global $pdo; 
-    $stmt = $pdo->query("SELECT * FROM recipes ORDER BY id DESC");
+    $stmt = $pdo->query("SELECT * FROM recipes");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function searchRecipes($keyword) {
+function searchRecipes($search) {
     global $pdo;
-    $stmt = $pdo->prepare("SELECT * FROM recipes WHERE name LIKE :keyword");
-    $stmt->execute(['keyword' => "%" . $keyword . "%"]);
+    $stmt = $pdo->prepare("SELECT * FROM recipes WHERE name LIKE :search");
+    $stmt->execute(['search' => "%" . $search . "%"]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
