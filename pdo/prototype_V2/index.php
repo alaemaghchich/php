@@ -1,7 +1,6 @@
 <?php
 require_once "db.php";
 
-// fetch all products
 $stmt = $pdo->query("SELECT * FROM products ORDER BY id DESC");
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -19,17 +18,15 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     button{
         margin: 10px;
     }
-h2{
-    margin: 10px;
-}
+
    </style>
 </head>
-<body>
+<body style="background-color: 	rgb(25, 25, 26);">
 
-<h2>List of Products</h2>
+<h2 style="margin: 10px; color:aliceblue">List of Products</h2>
 
 <a href="add.php"><button type="button" class="btn btn-success" ><i class="bi bi-plus-square"></i> add product</button></a>
-<table class="table table-dark table-striped table-hover w-auto ">
+<table class="table table-dark table-striped table-hover ">
       <tr>
         <th>ID</th>
         <th>Name</th>
