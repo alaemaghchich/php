@@ -11,3 +11,5 @@ try {
     echo "Connection failed: " . htmlspecialchars($e->getMessage());
     exit;
 }
+
+return $pdo;
