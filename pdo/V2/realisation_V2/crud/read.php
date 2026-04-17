@@ -11,13 +11,16 @@ $recipes = getRecipes($pdo);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="container">
-        <h2>📖 Recipes List</h2>
+        <h2><i class="bi bi-list-task"></i> Recipes List</h2>
         
-        <a href="create.php" class="btn btn-add">➕ Add a Recipe</a>
+        <a href="create.php"><button type="button" class="btn btn-outline-success"><i class="bi bi-plus-lg"></i> Add a Recipe</button></a>
         
         <table>
             <thead>
@@ -45,8 +48,8 @@ $recipes = getRecipes($pdo);
                     <td><?= htmlspecialchars($recipe['prep_time']) ?> min</td>
                     
                     <td>
-                        <a href="update.php?id=<?= $recipe['id'] ?>" class="btn btn-edit">✏️ Edit</a>
-                        <a href="delete.php?id=<?= $recipe['id'] ?>" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this recipe?');">❌ Delete</a>
+                        <a href="update.php?id=<?= $recipe['id'] ?>"><button type="button" class="btn btn-outline-warning"><i class="bi bi-pen"></i> Edit</button></a>
+                        <a href="delete.php?id=<?= $recipe['id'] ?>" onclick="return confirm('Are you sure you want to delete this recipe?');"><button type="button" class="btn btn-outline-danger"><i class="bi bi-trash3"></i> delete</button></a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -60,7 +63,7 @@ $recipes = getRecipes($pdo);
         </table>
         
         <br>
-        <a href="../index.php" class="btn">🔙 Back to Home</a>
+        <a href="../index.php"><button type="button" class="btn btn-outline-dark"><i class="bi bi-arrow-return-left"></i> Back to Home</button></a>
     </div>
 </body>
 </html>

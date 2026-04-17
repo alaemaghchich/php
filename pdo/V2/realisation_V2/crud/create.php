@@ -58,11 +58,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Recipe</title>
-    <link rel="stylesheet" href="../css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="container">
-        <h2>➕ Add a New Recipe</h2>
+        <h2><i class="bi bi-plus-lg"></i> Add a New Recipe</h2>
         
         <?php if($error): ?>
             <div style="color: red; margin-bottom: 15px; font-weight: bold;"><?= $error ?></div>
@@ -89,14 +92,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php endforeach; ?>
                 </select>
             </div>
-            
-            <div class="form-group">
-                <label for="image">Image (Optional)</label>
-                <input type="file" id="image" name="image" accept="image/*">
+            <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Image (Optional)</label>
+            <input class="form-control" type="file" name="image" accept="image/*" id="formFileMultiple" multiple>
             </div>
             
-            <button type="submit" class="btn btn-add">Save Recipe</button>
-            <a href="read.php" class="btn">Cancel</a>
+            <button type="submit" class="btn btn-success">Save Recipe</button>
+            <a href="read.php" ><button type="button" class="btn btn-danger">Cancel</button></a>
             
         </form>
     </div>
