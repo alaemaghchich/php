@@ -3,7 +3,7 @@ require_once '../db.php';
 
 $id = $_GET['id'] ?? null;
 
-if ($id) {
+if ($id){
     // 1. Optional: Get image name to delete the file from the server
     $stmt = $pdo->prepare("SELECT image FROM recipes WHERE id = :id");
     $stmt->execute([':id' => $id]);

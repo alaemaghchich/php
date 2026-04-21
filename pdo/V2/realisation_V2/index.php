@@ -78,7 +78,6 @@
             box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5);
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from {
                 opacity: 0;
