@@ -4,10 +4,10 @@ require_once '../db.php';
 $id = $_GET['id'] ?? null;
 
 if ($id){
-    // 1. Optional: Get image name to delete the file from the server
+    //Optional: Get image name to delete the file from the server
     $stmt = $pdo->prepare("SELECT image FROM recipes WHERE id = :id");
     $stmt->execute([':id' => $id]);
-    $recipe = $stmt->fetch();
+    $recipe = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($recipe && !empty($recipe['image'])) {
         $image_path = '../images/' . $recipe['image'];
@@ -16,11 +16,11 @@ if ($id){
         }
     }
 
-    // 2. Delete the record from database
+    //Delete the record from database
     $stmt = $pdo->prepare("DELETE FROM recipes WHERE id = :id");
     $stmt->execute([':id' => $id]);
 }
 
-// 3. Redirect back to the list
+//Redirect back to the list
 header('Location: read.php');
 exit;

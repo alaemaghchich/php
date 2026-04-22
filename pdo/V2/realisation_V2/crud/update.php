@@ -2,7 +2,7 @@
 require_once '../db.php';
 require_once '../functions.php';
 
-// 1. Get the ID from the URL
+//Get the ID from the URL
 $id = $_GET['id'] ?? null;
 
 if (!$id) {
@@ -10,7 +10,7 @@ if (!$id) {
     exit;
 }
 
-// 2. Fetch the current recipe data to pre-fill the form
+//Fetch the current recipe data to pre-fill the form
 $stmt = $pdo->prepare("SELECT * FROM recipes WHERE id = :id");
 $stmt->execute([':id' => $id]);
 $recipe = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -22,7 +22,7 @@ if (!$recipe) {
 $categories = getCategories($pdo);
 $error = '';
 
-// 3. Handle the update when form is submitted
+//Handle the update when form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $prep_time = trim($_POST['prep_time'] ?? '');
@@ -36,8 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $tmp_name = $_FILES['image']['tmp_name'];
             $file_ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-            $image_name = time() . '.' . $file_ext;
-            move_uploaded_file($tmp_name, '../images/' . $image_name);
+            $image_name = time() . "." . $file_ext;
+            $destination = '../images/' . $image_name;
+            move_uploaded_file($tmp_name, $destination);
             
             // Optional: Delete the old image file from the folder to save space
             if (!empty($recipe['image']) && file_exists('../images/' . $recipe['image'])) {
@@ -45,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // 4. Execute the Update query
+        //Execute the Update query
         $sql = "UPDATE recipes 
                 SET name = :name, prep_time = :prep_time, image = :image, category_id = :category_id, edited_at = NOW() 
                 WHERE id = :id";

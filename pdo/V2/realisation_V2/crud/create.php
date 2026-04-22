@@ -15,18 +15,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($name) || empty($prep_time) || empty($category_id)) {
         $error = "Please fill in all required fields (Name, Prep Time, Category).";
     } else {
-
-        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK){
-            /*UPLOAD_ERR_OK = 0(ya3ni lfile khdem) */
-            $tmp_name = $_FILES['image']['tmp_name'];
-            $file_name = basename($_FILES['image']['name']);
-            $destination = '../images/' . $file_name;
-            move_uploaded_file($tmp_name, $destination);
-        }
+if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK){
+    //When you upload a file to PHP, the server puts it in a temporary folder and gives it a random name.
+    $tmp_name = $_FILES['image']['tmp_name'];
+    //get the file name only without the path (security)
+    $file_name = basename($_FILES['image']['name']);
+    $image_name = time() . '_' . $file_name;
+    $destination = '../images/' . $image_name;
+    move_uploaded_file($tmp_name, $destination);
+    }
         /*super global $_files structure
         $_FILES['image'] = 
         ['name' => 'file.jpg',
-        'type' => 'image/jpeg',
+        'type' => 'image/jpeg', 
         'tmp_name' => '/tmp/php123',
         'error' => upload statu,
         'size' => 12345]; */
