@@ -21,8 +21,8 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK){
     //get the file name only without the path (security)
     $file_name = basename($_FILES['image']['name']);
     $image_name = time() . '_' . $file_name;
-    $destination = '../images/' . $image_name;
-    move_uploaded_file($tmp_name, $destination);
+    $path = '../images/' . $image_name;
+    move_uploaded_file($tmp_name, $path);
     }
         /*super global $_files structure
         $_FILES['image'] = 

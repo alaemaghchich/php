@@ -37,8 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $tmp_name = $_FILES['image']['tmp_name'];
             $file_ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
             $image_name = time() . "." . $file_ext;
-            $destination = '../images/' . $image_name;
-            move_uploaded_file($tmp_name, $destination);
+            $path = '../images/' . $image_name;
+            move_uploaded_file($tmp_name, $path);
             
             // Optional: Delete the old image file from the folder to save space
             if (!empty($recipe['image']) && file_exists('../images/' . $recipe['image'])) {

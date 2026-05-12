@@ -21,7 +21,6 @@
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
         }
-
         body {
             height: 100vh;
             display: flex;
@@ -106,5 +105,3 @@
 
 </body>
 </html>
-
-        
